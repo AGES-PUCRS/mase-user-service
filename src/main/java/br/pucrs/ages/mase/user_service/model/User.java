@@ -1,6 +1,9 @@
 package br.pucrs.ages.mase.user_service.model;
 
+import org.bson.types.ObjectId;
+
 public class User {
+    private ObjectId id;
     private String photo;
     private String cellphone;
     private String name;

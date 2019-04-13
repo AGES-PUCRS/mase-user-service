@@ -1,33 +1,38 @@
-package br.pucrs.ages.mase.user_service.input;
+package br.pucrs.ages.mase.user_service.dto;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.bson.types.ObjectId;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 public class UserDto {
 
+    private ObjectId id;
+    @NotEmpty
     private String photo;
-    @NotNull
     @NotEmpty
     private String cellphone;
-    @NotNull
     @NotEmpty
     private String name;
-    @NotNull
     @NotEmpty
     private String surname;
-    @NotNull
     @NotEmpty
     private String password;
-    @NotNull
     @NotEmpty
     private String email;
+    @NotEmpty
     private String role;
-    @NotNull
     @NotEmpty
     private String cpf;
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
 
     public String getPhoto() {
         return photo;
