@@ -1,6 +1,5 @@
 package br.pucrs.ages.mase.user_service.entity;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class UserEntity {
 
     @Id
-    private ObjectId id;
+    private String id;
     private String photo;
     private String cellphone;
     private String name;
@@ -17,6 +16,10 @@ public class UserEntity {
     private String email;
     private String role;
     private String cpf;
+
+    public String getId() {
+        return id;
+    }
 
     public String getPhoto() {
         return photo;

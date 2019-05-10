@@ -29,9 +29,5 @@ public class UserController {
                 .defaultIfEmpty(ResponseEntity.badRequest().build());
     }
 
-    @GetMapping("/")
-    public Mono<ResponseEntity<UserDto>> getUser(@PathVariable String id){
-        return userService.
-    }
 }
 
