@@ -1,11 +1,13 @@
 package br.pucrs.ages.mase.user_service.service;
 
-import br.pucrs.ages.mase.user_service.entity.UserEntity;
-import br.pucrs.ages.mase.user_service.model.User;
-import br.pucrs.ages.mase.user_service.repository.UserRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import br.pucrs.ages.mase.user_service.dto.UserDto;
+import br.pucrs.ages.mase.user_service.entity.User;
+import br.pucrs.ages.mase.user_service.repository.UserRepository;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
@@ -19,12 +21,9 @@ public class UserService {
     private ObjectMapper objectMapper;
 
 
-    public Mono<User> insert(User user) {
-        return userRepository.save(objectMapper.convertValue(user, UserEntity.class))
+    public Mono<UserDto> insert(UserDto userDto) {
+        return userRepository.save(objectMapper.convertValue(userDto, User.class))
                 .subscribeOn(Schedulers.elastic())
-                .map(userEntity -> objectMapper.convertValue(userEntity, User.class))
-                .doOnError(exception -> {
-                    throw new RuntimeException(exception);
-                });
+                .map(user -> objectMapper.convertValue(user, UserDto.class));
     }
 }
