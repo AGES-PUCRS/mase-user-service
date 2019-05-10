@@ -20,8 +20,6 @@ public class UserService {
 
 
     public Mono<User> insert(User user) {
-
-        userRepository.findAllByName("teste");
         return userRepository.save(objectMapper.convertValue(user, UserEntity.class))
                 .subscribeOn(Schedulers.elastic())
                 .map(userEntity -> objectMapper.convertValue(userEntity, User.class))
@@ -29,8 +27,4 @@ public class UserService {
                     throw new RuntimeException(exception);
                 });
     }
-
-//    public Mono<User> findById(String userId){
-//        return userRepository.findById();
-//    }
 }

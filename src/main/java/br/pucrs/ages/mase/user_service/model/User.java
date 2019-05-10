@@ -1,9 +1,10 @@
 package br.pucrs.ages.mase.user_service.model;
 
-import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 
 public class User {
-    private ObjectId id;
+    @Id
+    private String id;
     private String photo;
     private String cellphone;
     private String name;
@@ -76,4 +77,9 @@ public class User {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    public String getId() {
+        return id;
+    }
+
 }

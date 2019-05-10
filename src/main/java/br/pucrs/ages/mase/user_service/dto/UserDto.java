@@ -2,13 +2,12 @@ package br.pucrs.ages.mase.user_service.dto;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.bson.types.ObjectId;
 
 import javax.validation.constraints.NotEmpty;
 
 public class UserDto {
 
-    private ObjectId id;
+    private String id;
     @NotEmpty
     private String photo;
     @NotEmpty
@@ -26,14 +25,9 @@ public class UserDto {
     @NotEmpty
     private String cpf;
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
-
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
-
     public String getPhoto() {
         return photo;
     }
