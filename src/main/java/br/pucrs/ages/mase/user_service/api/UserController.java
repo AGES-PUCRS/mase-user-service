@@ -33,7 +33,7 @@ public class UserController {
 	public Flux<UserDto> getAll() {
 		return userService.getAll();
 	}
-	@ApiOperation(value = "Api para registrar usuário não voluntário",
+	@ApiOperation(value = "API para registrar usuário não voluntário",
 			notes = "Faz a inclusão de um usuário não voluntário no sistema.")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Inclusão de usuário realizada com sucesso", response = UserDto.class),
@@ -43,7 +43,7 @@ public class UserController {
         return userService.insert(userDto);
     }
 
-	@ApiOperation(value = "Api para registrar voluntário",
+	@ApiOperation(value = "API para registrar voluntário",
 			notes = "Faz a inclusão de um voluntário no sistema.")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Inclusão de voluntário realizada com sucesso", response = VolunteerDto.class),
@@ -53,7 +53,7 @@ public class UserController {
         return userService.insert(volunteerDto);
     }
 
-	@ApiOperation(value = "Api para registrar funcionário da defesa civil",
+	@ApiOperation(value = "API para registrar funcionário da defesa civil",
 			notes = "Faz a inclusão de um funcionário da defesa civil no sistema.")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Inclusão de funcionário da defesa civil realizada com sucesso", response = VolunteerDto.class),
@@ -63,7 +63,7 @@ public class UserController {
         return userService.insert(civilDefenseOfficialDto);
     }
 	
-	@ApiOperation(value = "Api para retornar todos os voluntários de determinada profissão",
+	@ApiOperation(value = "API para retornar todos os voluntários de determinada profissão",
 			notes = "Retorna todos os voluntários que praticam a profissão informada.")
 	@GetMapping("/volunteers/occupation/{occupation}")
 	public Flux<VolunteerDto> getAllByOccupation(@PathVariable("occupation") String occupation) {
