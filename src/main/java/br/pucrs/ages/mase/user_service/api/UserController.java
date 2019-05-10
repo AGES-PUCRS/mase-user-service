@@ -2,6 +2,10 @@ package br.pucrs.ages.mase.user_service.api;
 
 import javax.validation.Valid;
 
+import br.pucrs.ages.mase.user_service.entity.Volunteer;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,17 +33,31 @@ public class UserController {
 	public Flux<UserDto> getAll() {
 		return userService.getAll();
 	}
-    
+	@ApiOperation(value = "Api para registrar usuário não voluntário",
+			notes = "Faz a inclusão de um usuário não voluntário no sistema.")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Inclusão de usuário realizada com sucesso", response = UserDto.class),
+	})
     @PostMapping
     public Mono<UserDto> insert(@Valid @RequestBody UserDto userDto) {
         return userService.insert(userDto);
     }
-    
+
+	@ApiOperation(value = "Api para registrar voluntário",
+			notes = "Faz a inclusão de um voluntário no sistema.")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Inclusão de voluntário realizada com sucesso", response = VolunteerDto.class),
+	})
     @PostMapping("/volunteer")
     public Mono<VolunteerDto> insert(@Valid @RequestBody VolunteerDto volunteerDto) {
         return userService.insert(volunteerDto);
     }
-    
+
+	@ApiOperation(value = "Api para registrar funcionário da defesa civil",
+			notes = "Faz a inclusão de um funcionário da defesa civil no sistema.")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Inclusão de funcionário da defesa civil realizada com sucesso", response = VolunteerDto.class),
+	})
     @PostMapping("/civil-defense-official")
     public Mono<CivilDefenseOfficialDto> insert(@Valid @RequestBody CivilDefenseOfficialDto civilDefenseOfficialDto) {
         return userService.insert(civilDefenseOfficialDto);
