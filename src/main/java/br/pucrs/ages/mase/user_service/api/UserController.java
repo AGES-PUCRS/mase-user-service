@@ -36,12 +36,12 @@ public class UserController {
     }
     
     @PostMapping("/volunteer")
-    public Mono<UserDto> insert(@Valid @RequestBody VolunteerDto volunteerDto) {
+    public Mono<VolunteerDto> insert(@Valid @RequestBody VolunteerDto volunteerDto) {
         return userService.insert(volunteerDto);
     }
     
     @PostMapping("/civil-defense-official")
-    public Mono<UserDto> insert(@Valid @RequestBody CivilDefenseOfficialDto civilDefenseOfficialDto) {
+    public Mono<CivilDefenseOfficialDto> insert(@Valid @RequestBody CivilDefenseOfficialDto civilDefenseOfficialDto) {
         return userService.insert(civilDefenseOfficialDto);
     }
 

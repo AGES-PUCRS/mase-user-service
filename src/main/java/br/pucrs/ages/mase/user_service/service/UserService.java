@@ -4,8 +4,12 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import br.pucrs.ages.mase.user_service.dto.CivilDefenseOfficialDto;
 import br.pucrs.ages.mase.user_service.dto.UserDto;
+import br.pucrs.ages.mase.user_service.dto.VolunteerDto;
+import br.pucrs.ages.mase.user_service.entity.CivilDefenseOfficial;
 import br.pucrs.ages.mase.user_service.entity.User;
+import br.pucrs.ages.mase.user_service.entity.Volunteer;
 import br.pucrs.ages.mase.user_service.repository.UserRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -32,4 +36,17 @@ public class UserService {
                 .subscribeOn(Schedulers.elastic())
                 .map(user -> objectMapper.convertValue(user, UserDto.class));
     }
+    
+    public Mono<VolunteerDto> insert(VolunteerDto volunteerDto) {
+        return userRepository.save(objectMapper.convertValue(volunteerDto, Volunteer.class))
+                .subscribeOn(Schedulers.elastic())
+                .map(volunteer -> objectMapper.convertValue(volunteer, VolunteerDto.class));
+    }
+    
+    public Mono<CivilDefenseOfficialDto> insert(CivilDefenseOfficialDto civilDefenseOfficialDto) {
+        return userRepository.save(objectMapper.convertValue(civilDefenseOfficialDto, CivilDefenseOfficial.class))
+                .subscribeOn(Schedulers.elastic())
+                .map(civilDefenseOfficial -> objectMapper.convertValue(civilDefenseOfficial, CivilDefenseOfficialDto.class));
+    }
+    
 }
