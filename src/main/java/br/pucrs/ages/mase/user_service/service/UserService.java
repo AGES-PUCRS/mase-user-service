@@ -28,6 +28,7 @@ public class UserService {
     
     public Flux<UserDto> getAll() {
     	return userRepository.findAll()
+    			.subscribeOn(Schedulers.elastic())
     			.map(user -> objectMapper.convertValue(user, UserDto.class));
     }
 
@@ -47,6 +48,12 @@ public class UserService {
         return userRepository.save(objectMapper.convertValue(civilDefenseOfficialDto, CivilDefenseOfficial.class))
                 .subscribeOn(Schedulers.elastic())
                 .map(civilDefenseOfficial -> objectMapper.convertValue(civilDefenseOfficial, CivilDefenseOfficialDto.class));
+    }
+    
+    public Flux<VolunteerDto> getAllByOccupation(String occupation) {
+    	return userRepository.findAllByOccupation(occupation)
+    			.subscribeOn(Schedulers.elastic())
+    			.map(volunteer -> objectMapper.convertValue(volunteer, VolunteerDto.class));
     }
     
 }

@@ -2,11 +2,8 @@ package br.pucrs.ages.mase.user_service.api;
 
 import javax.validation.Valid;
 
-import br.pucrs.ages.mase.user_service.entity.Volunteer;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +13,9 @@ import br.pucrs.ages.mase.user_service.dto.CivilDefenseOfficialDto;
 import br.pucrs.ages.mase.user_service.dto.UserDto;
 import br.pucrs.ages.mase.user_service.dto.VolunteerDto;
 import br.pucrs.ages.mase.user_service.service.UserService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -62,6 +62,13 @@ public class UserController {
     public Mono<CivilDefenseOfficialDto> insert(@Valid @RequestBody CivilDefenseOfficialDto civilDefenseOfficialDto) {
         return userService.insert(civilDefenseOfficialDto);
     }
+	
+	@ApiOperation(value = "Api para retornar todos os voluntários de determinada profissão",
+			notes = "Retorna todos os voluntários que praticam a profissão informada.")
+	@GetMapping("/volunteers/occupation/{occupation}")
+	public Flux<VolunteerDto> getAllByOccupation(@PathVariable("occupation") String occupation) {
+		return userService.getAllByOccupation(occupation);
+	}
 
 }
 
