@@ -3,7 +3,7 @@ package br.pucrs.ages.mase.user_service.entity;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "civildefenseofficials")
-public class CivilDefenseOfficial {
+public class CivilDefenseOfficial extends User {
 	
 	private String office;
 	private String institutionalLink;

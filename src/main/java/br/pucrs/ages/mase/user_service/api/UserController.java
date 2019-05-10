@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.pucrs.ages.mase.user_service.dto.CivilDefenseOfficialDto;
 import br.pucrs.ages.mase.user_service.dto.UserDto;
+import br.pucrs.ages.mase.user_service.dto.VolunteerDto;
 import br.pucrs.ages.mase.user_service.service.UserService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -31,6 +33,16 @@ public class UserController {
     @PostMapping
     public Mono<UserDto> insert(@Valid @RequestBody UserDto userDto) {
         return userService.insert(userDto);
+    }
+    
+    @PostMapping("/volunteer")
+    public Mono<UserDto> insert(@Valid @RequestBody VolunteerDto volunteerDto) {
+        return userService.insert(volunteerDto);
+    }
+    
+    @PostMapping("/civil-defense-official")
+    public Mono<UserDto> insert(@Valid @RequestBody CivilDefenseOfficialDto civilDefenseOfficialDto) {
+        return userService.insert(civilDefenseOfficialDto);
     }
 
 }
