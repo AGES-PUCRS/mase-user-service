@@ -10,7 +10,9 @@ import br.pucrs.ages.mase.user_service.dto.VolunteerDto;
 import br.pucrs.ages.mase.user_service.entity.CivilDefenseOfficial;
 import br.pucrs.ages.mase.user_service.entity.User;
 import br.pucrs.ages.mase.user_service.entity.Volunteer;
+import br.pucrs.ages.mase.user_service.repository.CivilDefenseOfficialRepository;
 import br.pucrs.ages.mase.user_service.repository.UserRepository;
+import br.pucrs.ages.mase.user_service.repository.VolunteerRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
@@ -19,17 +21,16 @@ import reactor.core.scheduler.Schedulers;
 public class UserService {
 
     private UserRepository userRepository;
+    private VolunteerRepository volunteerRepository;
+    private CivilDefenseOfficialRepository civilDefenseOfficialRepository;
     private ObjectMapper objectMapper;
     
-    public UserService(UserRepository userRepository, ObjectMapper objectMapper) {
+    public UserService(UserRepository userRepository, VolunteerRepository volunteerRepository,
+    		CivilDefenseOfficialRepository civilDefenseOfficialRepository, ObjectMapper objectMapper) {
     	this.userRepository = userRepository;
+    	this.volunteerRepository = volunteerRepository;
+    	this.civilDefenseOfficialRepository = civilDefenseOfficialRepository;
     	this.objectMapper = objectMapper;
-    }
-    
-    public Flux<UserDto> getAll() {
-    	return userRepository.findAll()
-    			.subscribeOn(Schedulers.elastic())
-    			.map(user -> objectMapper.convertValue(user, UserDto.class));
     }
 
     public Mono<UserDto> insert(UserDto userDto) {
@@ -39,19 +40,19 @@ public class UserService {
     }
     
     public Mono<VolunteerDto> insert(VolunteerDto volunteerDto) {
-        return userRepository.save(objectMapper.convertValue(volunteerDto, Volunteer.class))
+        return volunteerRepository.save(objectMapper.convertValue(volunteerDto, Volunteer.class))
                 .subscribeOn(Schedulers.elastic())
                 .map(volunteer -> objectMapper.convertValue(volunteer, VolunteerDto.class));
     }
     
     public Mono<CivilDefenseOfficialDto> insert(CivilDefenseOfficialDto civilDefenseOfficialDto) {
-        return userRepository.save(objectMapper.convertValue(civilDefenseOfficialDto, CivilDefenseOfficial.class))
+        return civilDefenseOfficialRepository.save(objectMapper.convertValue(civilDefenseOfficialDto, CivilDefenseOfficial.class))
                 .subscribeOn(Schedulers.elastic())
                 .map(civilDefenseOfficial -> objectMapper.convertValue(civilDefenseOfficial, CivilDefenseOfficialDto.class));
     }
     
     public Flux<VolunteerDto> getAllByOccupation(String occupation) {
-    	return userRepository.findAllByOccupation(occupation)
+    	return volunteerRepository.findAllByOccupation(occupation)
     			.subscribeOn(Schedulers.elastic())
     			.map(volunteer -> objectMapper.convertValue(volunteer, VolunteerDto.class));
     }

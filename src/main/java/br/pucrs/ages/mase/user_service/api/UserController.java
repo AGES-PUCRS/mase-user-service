@@ -29,10 +29,6 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@GetMapping
-	public Flux<UserDto> getAll() {
-		return userService.getAll();
-	}
 	@ApiOperation(value = "API para registrar usuário não voluntário",
 			notes = "Faz a inclusão de um usuário não voluntário no sistema.")
 	@ApiResponses(value = {
