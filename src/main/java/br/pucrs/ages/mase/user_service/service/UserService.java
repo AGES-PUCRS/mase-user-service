@@ -29,7 +29,6 @@ public class UserService {
     		CivilDefenseOfficialRepository civilDefenseOfficialRepository, ObjectMapper objectMapper) {
     	this.userRepository = userRepository;
     	this.volunteerRepository = volunteerRepository;
-    	this.civilDefenseOfficialRepository = civilDefenseOfficialRepository;
     	this.objectMapper = objectMapper;
     }
 
@@ -55,6 +54,11 @@ public class UserService {
     	return volunteerRepository.findAllByOccupation(occupation)
     			.subscribeOn(Schedulers.elastic())
     			.map(volunteer -> objectMapper.convertValue(volunteer, VolunteerDto.class));
+    }
+    
+    public Flux<CivilDefenseOfficialDto> getAllByInstitutionalLink(String institutionalLink) {
+    	return civilDefenseOfficialRepository.findAllByInstitutionalLink(institutionalLink)
+    			.map(civilDefenseOfficial -> objectMapper.convertValue(civilDefenseOfficial, CivilDefenseOfficialDto.class));
     }
     
 }

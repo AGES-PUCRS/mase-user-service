@@ -65,6 +65,13 @@ public class UserController {
 	public Flux<VolunteerDto> getAllByOccupation(@PathVariable("occupation") String occupation) {
 		return userService.getAllByOccupation(occupation);
 	}
+	
+	@ApiOperation(value = "API para retornar todos os funcionários da Defesa Civil de determinada instituição",
+			notes = "Retorna todos os funcionários da Instituição da Defesa Civil informada.")
+	@GetMapping("/civil-defense-institution/{institution}/civil-defense-officials")
+	public Flux<CivilDefenseOfficialDto> getAllByInstitutionalLink(@PathVariable("institution") String institution) {
+		return userService.getAllByInstitutionalLink(institution);
+	}
 
 }
 

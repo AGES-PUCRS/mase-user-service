@@ -1,12 +1,13 @@
 package br.pucrs.ages.mase.user_service.entity;
 
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "civildefenseofficials")
 public class CivilDefenseOfficial extends User {
 	
 	private String office;
-	private String institutionalLink;
+	private @Indexed String institutionalLink;
 	private boolean active;
 	
 	public String getOffice() {
