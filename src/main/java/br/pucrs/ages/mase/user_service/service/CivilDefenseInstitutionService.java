@@ -13,8 +13,8 @@ import reactor.core.scheduler.Schedulers;
 @Service
 public class CivilDefenseInstitutionService {
 	
-	private CivilDefenseInstitutionRepository civilDefenseInstitutionRepository;
-	private ObjectMapper objectMapper;
+	private final CivilDefenseInstitutionRepository civilDefenseInstitutionRepository;
+	private final ObjectMapper objectMapper;
 	
 	public CivilDefenseInstitutionService(CivilDefenseInstitutionRepository civilDefenseInstitutionRepository,
 			ObjectMapper objectMapper) {
