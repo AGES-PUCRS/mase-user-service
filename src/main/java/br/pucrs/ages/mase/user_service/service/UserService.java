@@ -30,6 +30,7 @@ public class UserService {
     	this.userRepository = userRepository;
     	this.volunteerRepository = volunteerRepository;
     	this.objectMapper = objectMapper;
+    	this.civilDefenseOfficialRepository = civilDefenseOfficialRepository;
     }
 
     public Mono<UserDto> insert(UserDto userDto) {

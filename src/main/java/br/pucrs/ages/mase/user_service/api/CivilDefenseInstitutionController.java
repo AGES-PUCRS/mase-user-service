@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiResponses;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/api/civil-defense-institution")
+@RequestMapping("/api/civil-defense-institutions")
 public class CivilDefenseInstitutionController {
 	
 	private CivilDefenseInstitutionService civilDefenseInstitutionService;

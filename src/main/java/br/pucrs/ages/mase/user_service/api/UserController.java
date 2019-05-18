@@ -44,7 +44,7 @@ public class UserController {
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Inclusão de voluntário realizada com sucesso", response = VolunteerDto.class),
 	})
-    @PostMapping("/volunteer")
+    @PostMapping("/volunteers")
     public Mono<VolunteerDto> insert(@Valid @RequestBody VolunteerDto volunteerDto) {
         return userService.insert(volunteerDto);
     }
@@ -54,7 +54,7 @@ public class UserController {
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Inclusão de funcionário da defesa civil realizada com sucesso", response = VolunteerDto.class),
 	})
-    @PostMapping("/civil-defense-official")
+    @PostMapping("/civil-defense-officials")
     public Mono<CivilDefenseOfficialDto> insert(@Valid @RequestBody CivilDefenseOfficialDto civilDefenseOfficialDto) {
         return userService.insert(civilDefenseOfficialDto);
     }
