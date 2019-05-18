@@ -1,20 +1,16 @@
-package br.pucrs.ages.mase.user_service;
+package br.pucrs.ages.mase.user_service.service;
 
 import br.pucrs.ages.mase.user_service.dto.CivilDefenseInstitutionDto;
 import br.pucrs.ages.mase.user_service.repository.CivilDefenseInstitutionRepository;
-import br.pucrs.ages.mase.user_service.service.CivilDefenseInstitutionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.benas.randombeans.api.EnhancedRandom;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
 public class CivilDefenseInstitutionServiceTest {
 
     private final CivilDefenseInstitutionService civilDefenseInstitutionService;

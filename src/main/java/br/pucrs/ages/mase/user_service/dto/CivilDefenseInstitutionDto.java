@@ -1,6 +1,7 @@
 package br.pucrs.ages.mase.user_service.dto;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class CivilDefenseInstitutionDto {
 
@@ -9,7 +10,7 @@ public class CivilDefenseInstitutionDto {
     private @NotEmpty String name;
     private @NotEmpty String email;
     private @NotEmpty String phoneNumber;
-    private @NotEmpty AddressDto address;
+    private @NotNull AddressDto address;
 
     public String getId() {
         return id;
