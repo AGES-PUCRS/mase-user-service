@@ -19,7 +19,11 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/civil-defense-institutions")
 public class CivilDefenseInstitutionController {
 	
-	private CivilDefenseInstitutionService civilDefenseInstitutionService;
+	private final CivilDefenseInstitutionService civilDefenseInstitutionService;
+	
+	public CivilDefenseInstitutionController(CivilDefenseInstitutionService civilDefenseInstitutionService) {
+		this.civilDefenseInstitutionService = civilDefenseInstitutionService;
+	}
 	
 	@ApiOperation(value = "API para registrar Instituição da Defesa Civil",
 			notes = "Faz a inclusão de uma Instituição da Defesa Civil no sistema.")

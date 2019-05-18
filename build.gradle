@@ -18,6 +18,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'io.github.benas:random-beans:3.7.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.1.4.RELEASE'
     implementation 'org.apache.commons:commons-lang3:3.8.1'
     implementation 'io.springfox:springfox-swagger2:2.9.2'

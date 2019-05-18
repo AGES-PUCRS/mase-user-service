@@ -20,10 +20,10 @@ import reactor.core.scheduler.Schedulers;
 @Service
 public class UserService {
 
-    private UserRepository userRepository;
-    private VolunteerRepository volunteerRepository;
-    private CivilDefenseOfficialRepository civilDefenseOfficialRepository;
-    private ObjectMapper objectMapper;
+    private final UserRepository userRepository;
+    private final VolunteerRepository volunteerRepository;
+    private final CivilDefenseOfficialRepository civilDefenseOfficialRepository;
+    private final ObjectMapper objectMapper;
     
     public UserService(UserRepository userRepository, VolunteerRepository volunteerRepository,
     		CivilDefenseOfficialRepository civilDefenseOfficialRepository, ObjectMapper objectMapper) {
