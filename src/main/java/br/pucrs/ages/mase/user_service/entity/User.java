@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
 
     private @Id String id;
+    private String mobileId;
     private String photo;
     private String phoneNumber;
     private String firstName;
@@ -17,6 +18,10 @@ public class User {
     public String getId() {
 		return id;
 	}
+    
+    public String getMobileId() {
+    	return mobileId;
+    }
 
 	public String getPhoto() {
 		return photo;

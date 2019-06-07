@@ -8,6 +8,7 @@ import javax.validation.constraints.NotEmpty;
 public class UserDto {
 
     private String id;
+    private @NotEmpty String mobileId;
     private @NotEmpty String photo;
     private @NotEmpty String phoneNumber;
     private @NotEmpty String firstName;
@@ -18,6 +19,10 @@ public class UserDto {
     public String getId() {
 		return id;
 	}
+    
+    public String getMobileId() {
+    	return mobileId;
+    }
 
 	public String getPhoto() {
 		return photo;
